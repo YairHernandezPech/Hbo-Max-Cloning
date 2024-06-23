@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hbo_max/components/InicioSecion2.dart';
+import 'package:hbo_max/components/Registrarse3.dart';
 
 class InicioSecion1 extends StatelessWidget {
   @override
@@ -56,7 +57,9 @@ class InicioSecion1 extends StatelessWidget {
                 children: [
                   const FittedBox(
                     fit: BoxFit.scaleDown,
-                    child: Image(image: AssetImage('images/logo.png'),),
+                    child: Image(
+                      image: AssetImage('images/logo.png'),
+                    ),
                     // child: Text(
                     //   'max',
                     //   style: TextStyle(
@@ -95,7 +98,13 @@ class InicioSecion1 extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Registrase()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
@@ -112,7 +121,8 @@ class InicioSecion1 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => InicioSecion2()),
+                        MaterialPageRoute(
+                            builder: (context) => InicioSecion2()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -133,7 +143,6 @@ class InicioSecion1 extends StatelessWidget {
                       'Privacidad y Legales',
                       style: TextStyle(
                         color: Colors.blue,
-                        
                       ),
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hbo_max/components/AuthApiFirebase.dart';
 import 'package:hbo_max/components/InicioSecion1.dart';
 import 'package:hbo_max/components/Home.dart';
 import 'package:hbo_max/components/Search.dart';
@@ -20,8 +21,8 @@ class _ProfileState extends State<Profile> {
         context,
         MaterialPageRoute(builder: (context) => HbomaxHome()),
       );
-    }else if(index ==2){
-        Navigator.push(
+    } else if (index == 2) {
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Search()),
       );
@@ -90,18 +91,38 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             const SizedBox(height: 20),
-            _buildOptionTile('Configuración de la aplicación',
-                const Icon(Icons.arrow_forward_ios, color: Colors.white),InicioSecion1() ),
-            _buildOptionTile('Cuenta',
-                const Icon(Icons.arrow_forward_ios, color: Colors.white),InicioSecion1()),
-            _buildOptionTile('Suscripción',
-                const Icon(Icons.arrow_forward_ios, color: Colors.white),InicioSecion1()),
-            _buildOptionTile('Privacidad y Términos',
-                const Icon(Icons.arrow_forward_ios, color: Colors.white),InicioSecion1()),
             _buildOptionTile(
-                'Ayuda', const Icon(Icons.ios_share, color: Colors.white),InicioSecion1()),
-            _buildOptionTile('Cerrar sesión',
-                const Icon(Icons.arrow_forward_ios, color: Colors.white),InicioSecion1()),
+              'Configuración de la aplicación',
+              const Icon(Icons.arrow_forward_ios, color: Colors.white),
+              page: InicioSecion1(),
+            ),
+            _buildOptionTile(
+              'Cuenta',
+              const Icon(Icons.arrow_forward_ios, color: Colors.white),
+              page: InicioSecion1(),
+            ),
+            _buildOptionTile(
+              'Suscripción',
+              const Icon(Icons.arrow_forward_ios, color: Colors.white),
+              page: InicioSecion1(),
+            ),
+            _buildOptionTile(
+              'Privacidad y Términos',
+              const Icon(Icons.arrow_forward_ios, color: Colors.white),
+              page: InicioSecion1(),
+            ),
+            _buildOptionTile(
+              'Ayuda',
+              const Icon(Icons.ios_share, color: Colors.white),
+              page: InicioSecion1(),
+            ),
+            _buildOptionTile(
+              'Cerrar sesión',
+              const Icon(Icons.arrow_forward_ios, color: Colors.white),
+              onTap: () async {
+                await AuthService().signout(context: context);
+              },
+            ),
           ],
         ),
       ),
@@ -159,13 +180,17 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget _buildOptionTile(String title, Widget icon, Widget page) {
+  Widget _buildOptionTile(String title, Widget icon,
+      {Widget? page, Function()? onTap}) {
     return ListTile(
       title: Text(title, style: const TextStyle(color: Colors.white)),
       trailing: icon,
-      onTap: () {
-        _navigateToPage(page);
-      },
+      onTap: onTap ??
+          () {
+            if (page != null) {
+              _navigateToPage(page);
+            }
+          },
     );
   }
 }

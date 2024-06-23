@@ -7,12 +7,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hbo_max/components/AuthApiFirebase.dart';
 import 'package:hbo_max/components/SelecPerfil.dart';
 
-class InicioSesion extends StatefulWidget {
+class Registrase extends StatefulWidget {
   @override
-  State<InicioSesion> createState() => _InicioSesionState();
+  State<Registrase> createState() => _RegistraseState();
 }
 
-class _InicioSesionState extends State<InicioSesion> {
+class _RegistraseState extends State<Registrase> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -42,7 +42,7 @@ class _InicioSesionState extends State<InicioSesion> {
                         height: 30,
                       ),
                       Text(
-                        "Iniciar Sesión",
+                        "Creaer tu cuenta",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 27,
@@ -56,7 +56,7 @@ class _InicioSesionState extends State<InicioSesion> {
                 ),
                 const Center(
                   child: Text(
-                    "Igresa la direccion de correo electronico y la contraseña de tu cuenta",
+                    "Lo usarás para ver contenido en tus dispositivos favoritos",
                     style: TextStyle(color: Colors.white, fontSize: 13),
                   ),
                 ),
@@ -65,22 +65,21 @@ class _InicioSesionState extends State<InicioSesion> {
                 ),
                 const Center(
                   child: Text(
-                    "de Max o de HBO MAX",
+                    "*inidica un campo obligatorio",
                     style: TextStyle(color: Colors.white, fontSize: 13),
                   ),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                 Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                   child: Column(
                     children: [
                       const Row(
                         children: [
                           Text(
-                            'Correo electronico',
+                            'Correo electronico*',
                             style: TextStyle(color: Colors.white, fontSize: 13),
                           ),
                         ],
@@ -108,15 +107,48 @@ class _InicioSesionState extends State<InicioSesion> {
                 const SizedBox(
                   height: 0,
                 ),
-                Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Confirmar dirección de correo electrónico*',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        SizedBox(
+                          height: 48,
+                          child: TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintStyle: TextStyle(
+                                color: Colors.white,
+                                backgroundColor: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 0,
+                ),
+                 Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: Column(
                       children: [
                         const Row(
                           children: [
                             Text(
-                              'Contraseña',
+                              'Contraseña *',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 13),
                             ),
@@ -150,23 +182,80 @@ class _InicioSesionState extends State<InicioSesion> {
                         ),
                       ],
                     )),
-                const TextButton(
-                  onPressed: null,
-                  child: Text(
-                    '¿Olvidaste la contraseña?',
-                    style: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Righteous',
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold),
-                  ),
+                const SizedBox(
+                  height: 0,
                 ),
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Nombre *',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        SizedBox(
+                          height: 48,
+                          child: TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintStyle: TextStyle(
+                                color: Colors.white,
+                                backgroundColor: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 0,
+                ),
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Apellido*',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        SizedBox(
+                          height: 48,
+                          child: TextField(
+                            style: TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintStyle: TextStyle(
+                                color: Colors.white,
+                                backgroundColor: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
                 const SizedBox(
                   height: 6,
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    await AuthService().signin(
+                    await AuthService().signup(
                         email: _emailController.text,
                         password: _passwordController.text,
                         context: context);
@@ -178,7 +267,7 @@ class _InicioSesionState extends State<InicioSesion> {
                     minimumSize: MaterialStatePropertyAll(Size(320, 37)),
                   ),
                   child: const Text(
-                    "Iniciar sesión",
+                    "Crear Cuenta",
                     style: TextStyle(
                         fontSize: 15.0,
                         color: Colors.black,
@@ -220,20 +309,6 @@ class _InicioSesionState extends State<InicioSesion> {
                         ],
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                const TextButton(
-                  onPressed: null,
-                  child: Text(
-                    '¿Necesitas ayuda para iniciar sesión?',
-                    style: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'Righteous',
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
