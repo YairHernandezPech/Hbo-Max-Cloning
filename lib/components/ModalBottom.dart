@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hbo_max/components/pdf.dart';
 import 'package:share_plus/share_plus.dart';
 
 void ModalBottom(BuildContext context, TickerProvider vsync) {
@@ -67,7 +68,10 @@ void ModalBottom(BuildContext context, TickerProvider vsync) {
             ),
             TextButton(
               onPressed: () {
-                // Acción para más información
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PdfView()),
+                );
               },
               child: const Row(
                 children: [
