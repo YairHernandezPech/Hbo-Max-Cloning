@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654300813781",
+    "project_id": "pushnotificationflutter-b1be5",
+    "storage_bucket": "pushnotificationflutter-b1be5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654300813781:android:ca074235c6257002f6055c",
+        "android_client_info": {
+          "package_name": "com.example.hbo_max"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoku1dO0LMMxrGj6DRxjhOa0PlhrCVEPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
